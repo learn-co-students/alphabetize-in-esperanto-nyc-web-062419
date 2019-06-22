@@ -4,6 +4,7 @@ def alphabetize(arr)
   # code here
   esperanto_alphabet = "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz"
   longest_phrase = 0
+  sorted_phrases = []
   # phrases_as_nums = {}
   # sorted_phrases = []
 
@@ -46,7 +47,21 @@ def alphabetize(arr)
     longest_phrase
   end
 
-  sorted_phrases = arr.sort_by {|phrase| esperanto_alphabet.index(phrase[0])}
+
+  phrase_letters = []
+  
+  arr.collect do |phrase|
+    i = 0
+    while i < phrase.length
+      phrase_letters << esperanto_alphabet.index(phrase[i])
+      i += 1
+      phrase_letters
+    end
+    phrase_letters
+    sorted_phrases = arr.sort_by {|phrase| [phrase_letters]}
+  end
+
+  # sorted_phrases = arr.sort_by {|phrase| [esperanto_alphabet.index(phrase[0]), esperanto_alphabet.index(phrase[1])]}
 
   # i = 0
   # while i < longest_phrase
