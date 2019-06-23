@@ -3,7 +3,7 @@ require 'pry'
 def alphabetize(arr)
   # code here
   esperanto_alphabet = "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz"
-  longest_phrase = 0
+  shortest_phrase = Float::INFINITY
   sorted_phrases = []
   # phrases_as_nums = {}
   # sorted_phrases = []
@@ -41,25 +41,37 @@ def alphabetize(arr)
   #   sorted_phrases << phrase
   # end
   arr.each do |phrase|
-    if phrase.length > longest_phrase
-      longest_phrase = phrase.length
-    end
-    longest_phrase
-  end
+    if phrase.length < shortest_phrase
+      shortest_phrase = phrase.length
 
+    end
+    shortest_phrase
+  end
 
   phrase_letters = []
-  
-  arr.collect do |phrase|
-    i = 0
-    while i < phrase.length
-      phrase_letters << esperanto_alphabet.index(phrase[i])
-      i += 1
-      phrase_letters
-    end
+  i = 0
+
+  while i < shortest_phrase
+    phrase_letters << esperanto_alphabet.index(phrase[i])
+    i += 1
     phrase_letters
-    sorted_phrases = arr.sort_by {|phrase| [phrase_letters]}
   end
+  sorted_phrases = arr.sort_by {|phrase| [phrase_letters]}
+
+  # phrase_letters = []
+  
+  # arr.collect do |phrase|
+  #   i = 0
+  #   while i < phrase.length
+  #     phrase_letters << esperanto_alphabet.index(phrase[i])
+  #     i += 1
+  #     phrase_letters
+  #   end
+  #   phrase_letters
+  #   sorted_phrases = arr.sort_by {|phrase| [phrase_letters]}
+  # end
+
+
 
   # sorted_phrases = arr.sort_by {|phrase| [esperanto_alphabet.index(phrase[0]), esperanto_alphabet.index(phrase[1])]}
 
